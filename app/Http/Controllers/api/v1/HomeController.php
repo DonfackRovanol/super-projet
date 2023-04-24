@@ -29,7 +29,9 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|unique:products',
+            'description' => 'required', 
+            'price' => 'required'
         ]);
         return products::create($request->all());
     }
